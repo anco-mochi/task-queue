@@ -1,6 +1,6 @@
 {
   "name": "task-queue",
-  "homepage": "https://mokelab.github.io/task-queue",
+  "homepage": "https://mokelab.github.io/task-queue/build",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
