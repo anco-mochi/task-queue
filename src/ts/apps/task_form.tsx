@@ -17,20 +17,25 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
   }
 
   pushTaskQueue() {
-    this.setState(state => ({
+    this.setState({
       taskQueue: this.state.taskQueue.push(
           new Task(this.state.description)
       ),
       description: ''
-    }));
+    });
+  }
+
+  popTaskQueue() {
+    this.setState({
+      taskQueue: this.state.taskQueue.pop()
+    })
   }
 
   onChange(event: ChangeEvent<HTMLTextAreaElement>): void {
     this.setState({
-      taskQueue: this.state.taskQueue,
       description: event.target.value
     })
-  } 
+  }
 
   render() {
     return (
@@ -45,10 +50,15 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         </div>
         <div className="inline-block box-border w-full border-b-2 border-gray-400">
           <button
+            className="bg-red-400 hover:bg-red-500 px-6 py-1 text-white float-right rounded mb-1 mr-1"
+            onClick={() => { this.popTaskQueue() }}>Pop</button>
+          <button
             className="bg-green-400 hover:bg-green-500 px-6 py-1 text-white float-right rounded mb-1 mr-1"
             onClick={() => { this.pushTaskQueue()} }>Add</button>
         </div>
-        <TaskList task_queue={ this.state.taskQueue }/>
+        <TaskList
+          task_queue={ this.state.taskQueue }
+        />
       </div>
     );
   }
