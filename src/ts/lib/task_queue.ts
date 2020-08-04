@@ -20,13 +20,13 @@ export class TaskQueue {
     }
 
     pop(): TaskQueue {
-        let poped_queue: Array<Task> = this.queue.concat();
+        let poped_queue: Array<Task> = this.queue.concat().reverse();
 
         if(!poped_queue.pop()) {
             return this;
         }
 
-        return new TaskQueue(this.limit, poped_queue);
+        return new TaskQueue(this.limit, poped_queue.reverse());
     }
 
     isFull(): Boolean {
